@@ -1,0 +1,53 @@
+TP 1
+
+-  on cherche à prédire une position par un droite qui approxime le mieux les données
+
+de façon linéaire on cherche position = (fonction du temps) fTeta(temps) = teta1*temps + teta0
+
+Si on définit y = matrice à 1 dimension (1*N) = positions
+et x = matrice à 2 dimensions (2 * N) tq x[1] = temps et x[0] = 1
+
+x =
+[[x1]
+[x0]]
+
+et teta =
+[[teta1]
+[teta0]]
+
+=> y = fTeta(tps) = teta.T * x, mais on sait que x0 vaudra toujours 1 donc ça nous ramène à y = fteta(x) = teta1*x1 + teta0*1
+
+
+Pour mesurer la qualité de la prédiction on peut utiliser des mesures de perf tq:
+- mesure absolue
+- mesure racine carrée
+- mesure quadratique (la plus utilisé)
+- mesure infinie
+
+Il fallait donc pour le TP mesurer les performances de par rapport à une prédiction de la droite 3 x + 2 (ou 2 x + 3 ? je sais plus) et comparer entre elles les différentes mesures de perf
+
+Rep matricielle
+y = (N*1)
+x = (2*N)
+teta = (2*1)
+x.T = (N*2)
+
+x.T * teta = (N*1)
+
+y - (x.T * teta) = (N*1) => (y - (x.T * teta)).T = (1*N)
+
+Posons (*) = y - (x.T * teta)
+Pour mettre (*) au carré on peut faire l'opération matricielle (*).T * (*)
+
+
+TP2
+
+Cette fois il ne s'agit plus de comparer les mesures de perf mais de trouver la droite qui approxime les données (dans le TP1 la droite nous était donnée)
+
+On va donc minimiser l'erreur quadratique moyenne (MSE) pour trouver un moindre carré qui nous donne teta à partir de mesurePerf(teta) càd on cherche à ajuster les données pour trouver un teta qui minimise la MSE. (c'est une régression linéaire ?)
+Régression linéaire: En gros, on a un modéle linéaire et, on cherche les param teta grâce aux données {xi,yi}
+
+
+TP3
+
+On fait une descente de gradiant et une descente de gradiant stochastique

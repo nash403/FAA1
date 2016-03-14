@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import matplotlib.pyplot as plt
 import numpy as np
 import math
@@ -20,14 +23,14 @@ f2.close()
 def f(x):
     return 2*x +3
 
-print(t)
-print(p)
-plt.xlabel('time (s)')
-plt.ylabel('position (m)')
-plt.title('Test')
-plt.grid(True)
-plt.plot(t, p,'+')
-plt.plot([f(x) for x in range(20)],'r-')
+# print(t)
+# print(p)
+# plt.xlabel('time (s)')
+# plt.ylabel('position (m)')
+# plt.title('Test')
+# plt.grid(True)
+# plt.plot(t, p,'+')
+# plt.plot([f(x) for x in range(20)],'r-')
 # plt.show()
 
 def fXi(teta):
@@ -35,10 +38,13 @@ def fXi(teta):
     return (np.transpose(x) * teta)
 
 def jl1(teta):
-    res = y - fXi(teta)
+    res = p - fXi(teta)
     return (1.0/N) * math.sqrt(np.transpose(res) * res)
 
 def jl2(teta):
-    res = y - fXi(teta)
+    res = p - fXi(teta)
     m = (1.0/N) * np.transpose(res) * res
     return m[0,0]
+
+print "jl1", jl1(np.matrix([[a],[b]]))
+print "jl2", jl2(np.matrix([[a],[b]]))
